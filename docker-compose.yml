@@ -7,9 +7,9 @@ services:
       - "8000:8000"
     volumes:
       - ./ProjectManager:/app/ProjectManager # suncroniza a pasta local com a do container
-    # command: >
-    #   sh -c "python manage.py migrate &&
-    #          python manage.py runserver 0.0.0.0:8000"
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
     depends_on:
       - db
     environment:
@@ -17,6 +17,7 @@ services:
       - DB_USER=postgres
       - DB_PASSWORD=postgres
       - DB_HOST=db
+      - USE_POSTGRES=1
   db:
     image: postgres:15-alpine
     container_name: django_db

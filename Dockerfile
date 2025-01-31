@@ -20,5 +20,5 @@ RUN pip install -r requirements.txt
 # expondo a porta do django
 EXPOSE 8000
 
-# CMD [ "ls" ]
-CMD [ "python", "manage.py", "runserver", "0.0.0.0:8000" ]
+CMD [ "ls" ]
+# CMD [ "python", "manage.py", "runserver", "0.0.0.0:8000" ]

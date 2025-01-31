@@ -5,5 +5,5 @@ from django.http import HttpResponse
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', lambda x: HttpResponse('Django Docker!'))
+    path('', lambda x: HttpResponse('Django Docker!!'))
 ]

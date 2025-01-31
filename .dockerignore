@@ -1,8 +1,10 @@
-Dockerfile
-docker-compose.yml
+docker/dev/
+docker/main/
+
 .git
 __pycache__
 .venv
 .env
 env
 venv
+*.sqlite3

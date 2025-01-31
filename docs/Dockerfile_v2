@@ -1,0 +1,36 @@
+FROM python:3.12.8-alpine
+
+# Atualiza o sistema e instala pacotes necessários
+RUN apk add --update --no-cache \
+    postgresql-client \
+    shadow \
+    && apk add --update --no-cache --virtual .tmp-build-deps \
+    build-base postgresql-dev musl-dev
+
+# Criar ambiente virtual
+RUN python -m venv /py
+
+# Atualiza o pip
+RUN /py/bin/pip install --upgrade pip
+
+# Define o PATH para usar o ambiente virtual
+ENV PATH="/py/bin:$PATH"
+
+# Copia os arquivos do projeto
+COPY ./requirements.txt /tmp/requirements.txt
+COPY ./ProjectManager /ProjectManager
+
+# Instala dependências do projeto
+RUN pip install -r /tmp/requirements.txt
+
+# Remove pacotes desnecessários após a instalação
+RUN apk del .tmp-build-deps && rm -rf /tmp
+
+# Cria usuário sem senha para rodar a aplicação
+RUN adduser --disabled-password --no-create-home django-user
+
+# Define o usuário para rodar a aplicação
+USER django-user
+
+WORKDIR /ProjectManager
+EXPOSE 8000

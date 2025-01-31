@@ -1,0 +1,34 @@
+
+services:
+  app:
+    build: .
+    container_name: project_manager
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./ProjectManager:/ProjectManager
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    depends_on:
+      - db
+    environment:
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_HOST=db
+  db:
+    image: postgres:15-alpine
+    container_name: django_db
+    restart: always
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_python:/var/lib/postgresql/data
+
+volumes:
+  db_python:

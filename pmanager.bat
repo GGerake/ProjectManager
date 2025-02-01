@@ -1,13 +1,16 @@
 @echo off
 chcp 65001 >nul
-echo Gerenciador de comandos Docker do ProjectManager
 
 :: Definir cores para mensagens
+set PURPLE=[95m
 set GREEN=[32m
 set YELLOW=[33m
 set RED=[31m
 set RESET=[0m
 
+echo %GREEN%---------------------------------------------------%GREEN%
+echo %PURPLE%Gerenciador de comandos Docker do ProjectManager%RESET%
+echo %GREEN%---------------------------------------------------%GREEN%
 
 
 :: Verifica se foi passado um argumento

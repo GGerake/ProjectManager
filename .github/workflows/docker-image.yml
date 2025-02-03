@@ -1,0 +1,33 @@
+name: Build and Push ProjectManager GHCR
+
+on:
+  push:
+    branches:
+      - main  # Executa quando houver push na branch principal
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Login no GHCR
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ secrets.GITHUB_ACTOR }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Build e Push da imagem de desenvolvimento
+      - name: Build and Push Dev Image
+        run: |
+          docker build -t ghcr.io/${{ github.repository }}/app-dev:latest ./docker/dev
+          docker push ghcr.io/${{ github.repository }}/app-dev:latest
+
+      # Build e Push da imagem de produção
+      - name: Build and Push Prod Image
+        run: |
+          docker build -t ghcr.io/${{ github.repository }}/app-prod:latest ./docker/prod
+          docker push ghcr.io/${{ github.repository }}/app-prod:latest

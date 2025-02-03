@@ -7,7 +7,7 @@ services:
       dockerfile: docker/dev/Dockerfile
     container_name: app_project_manager
     ports:
-      - "8000:8000"
+      - "9900:8000"
     volumes:
       - ../../ProjectManager:/app/ProjectManager # sincroniza a pasta ocal com a do container
     command: >
@@ -31,7 +31,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
-      - "5432:5432"
+      - "9932:5432"
     volumes:
       - db_project_manager:/var/lib/postgresql/data
 

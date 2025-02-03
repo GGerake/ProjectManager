@@ -1,6 +1,7 @@
 
 services:
   app:
+    image: prod_project_manager
     build:
       context: ../.. # vai para o diretório raiz do projeto
       dockerfile: docker/prod/Dockerfile

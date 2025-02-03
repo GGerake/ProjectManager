@@ -1,5 +1,9 @@
 docker/dev/
-docker/main/
+docker/prod/
+docs
+.dockerignore
+.gitignore
+pmanager.bat
 
 .git
 __pycache__

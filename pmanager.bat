@@ -8,8 +8,10 @@ set YELLOW=[33m
 set RED=[31m
 set RESET=[0m
 
+set NAME=ProjectManager
+
 echo %GREEN%---------------------------------------------------%GREEN%
-echo %PURPLE%Gerenciador de comandos Docker do ProjectManager%RESET%
+echo %PURPLE%Gerenciador de comandos Docker do %NAME%%RESET%
 echo %GREEN%---------------------------------------------------%GREEN%
 
 
@@ -61,7 +63,7 @@ if "%2"=="start" (
 
 if "%2"=="rebuild" (
     echo %YELLOW%[INFO]🐣 Recriando os containers do ambiente %1...%RESET%
-    docker-compose -f %DOCKER_COMPOSE_FILE% up --build -d
+    docker-compose -f %DOCKER_COMPOSE_FILE% up --build -d 
     exit /b 0
 )
 

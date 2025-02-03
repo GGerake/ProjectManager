@@ -14,6 +14,9 @@ COPY requirements.txt ./requirements.txt
 # o diretório completo local será copiado para a pasta ./app/ (no caso o workdir)
 COPY . ./
 
+# da permissão para o script shell
+RUN chmod +x docker/wait-for-it.sh
+
 # ese comando será executado no workdir (pasta ./app)
 RUN pip install -r requirements.txt
 

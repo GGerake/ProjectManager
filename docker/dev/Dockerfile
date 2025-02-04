@@ -9,7 +9,7 @@ RUN apk add --no-cache gcc musl-dev python3-dev libffi-dev openssl-dev postgresq
 RUN pip install --upgrade pip
 
 # o requirements.txt ficara na pasta raiz
-COPY requirements.txt /app/requirements.txt
+COPY ./requirements.txt ./requirements.txt
 
 # o diretório completo local será copiado para a pasta ./app/ (no caso o workdir)
 COPY . ./

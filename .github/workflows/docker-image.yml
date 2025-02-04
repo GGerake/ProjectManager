@@ -24,12 +24,12 @@ jobs:
       - name: Build and Push Dev Image
         run: |
           REPO_LOWER=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
-          docker build -t ghcr.io/%REPO_LOWER%/app-dev:latest ./docker/dev
-          docker push ghcr.io/%REPO_LOWER%/app-dev:latest
+          docker build -t ghcr.io/$REPO_LOWER/app-dev:latest ./docker/dev
+          docker push ghcr.io/$REPO_LOWER/app-dev:latest
 
       # Build e Push da imagem de produção
       - name: Build and Push Prod Image
         run: |
           REPO_LOWER=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
-          docker build -t ghcr.io/%REPO_LOWER%/app-prod:latest ./docker/prod
-          docker push ghcr.io/%REPO_LOWER%/app-prod:latest
+          docker build -t ghcr.io/$REPO_LOWER/app-prod:latest ./docker/prod
+          docker push ghcr.io/$REPO_LOWER/app-prod:latest

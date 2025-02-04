@@ -1,0 +1,36 @@
+
+services:
+  app:
+    image: ghcr.io/ggerake/projectmanager/app-dev:latest
+    container_name: app_project_manager_ghcr
+    ports:
+      - "9900:8000"
+    volumes:
+      - ../../ProjectManager:/app/ProjectManager # sincroniza a pasta ocal com a do container
+    command: >
+      sh -c " ./docker/wait-for-it.sh db 5432 --
+              python manage.py migrate &&
+              python manage.py runserver 0.0.0.0:8000"
+    depends_on:
+      - db
+    environment:
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_HOST=db
+      - USE_POSTGRES=1
+  db:
+    image: postgres:15-alpine
+    container_name: db_project_manager_ghcr
+    restart: always
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "9932:5432"
+    volumes:
+      - db_project_manager_ghcr:/var/lib/postgresql/data
+
+volumes:
+  db_project_manager_ghcr:

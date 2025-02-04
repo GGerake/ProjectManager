@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main  # Executa quando houver push na branch principal
+      - test/workflow
 
 jobs:
   build:
@@ -19,6 +20,9 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Listar arquivos no diretório
+        run: ls -R
 
       # Build e Push da imagem de desenvolvimento
       - name: Build and Push Dev Image

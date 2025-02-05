@@ -23,6 +23,7 @@ services:
       - DB_HOST=db
       - USE_POSTGRES=1
       - POSTGRES_PORT=5432
+      - DEV=0
   db:
     image: postgres:15-alpine
     container_name: db_project_manager_prod

@@ -3,7 +3,7 @@
 
 services:
   app:
-    image: ghcr.io/ggerake/projectmanager/app-dev:latest
+    image: ghcr.io/ggerake/projectmanager/app-prod:latest
     build:
       context: ../.. # vai para o diretório raiz do projeto
       dockerfile: docker/prod/Dockerfile

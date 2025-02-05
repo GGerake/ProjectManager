@@ -24,7 +24,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Listar arquivos no diretório
-        run: ls -R
+        run: echo ${{github.ref}}
 
       # Build e Push da imagem de desenvolvimento
       # O build dessa imagem é realizado apenas se estiver na branch dev ou test/workflow

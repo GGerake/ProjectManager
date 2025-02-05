@@ -29,7 +29,7 @@ jobs:
       # Build e Push da imagem de desenvolvimento
       # O build dessa imagem é realizado apenas se estiver na branch dev ou test/workflow
       - name: Build and Push Dev Image
-        if: github.ref == 'refs/heads/dev' || github.ref == 'refs/head/test/workflow'
+        if: github.ref == 'refs/heads/dev' || github.ref == 'refs/heads/test/workflow'
         run: |
           REPO_LOWER=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
           docker build -t ghcr.io/$REPO_LOWER/app-dev:latest -f docker/dev/Dockerfile .
@@ -38,7 +38,7 @@ jobs:
       # Build e Push da imagem de produção
       # O build dessa imagem é realizado apenas se estiver na branch main
       - name: Build and Push Prod Image
-        if: github.ref == 'refs/head/main'
+        if: github.ref == 'refs/heads/main'
         run: |
           REPO_LOWER=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
           docker build -t ghcr.io/$REPO_LOWER/app-prod:latest -f docker/prod/Dockerfile .

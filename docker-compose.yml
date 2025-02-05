@@ -9,6 +9,9 @@ services:
       - ../../ProjectManager:/app/ProjectManager # sincroniza a pasta ocal com a do container
     command: >
       sh -c " ./docker/wait-for-it.sh db 5432 --
+              echo ------ visualizar pasta ------- &&
+              ls &&
+              echo ------------------------------- &&
               python manage.py migrate &&
               python manage.py runserver 0.0.0.0:8000"
     depends_on:

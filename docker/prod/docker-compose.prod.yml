@@ -1,4 +1,6 @@
 
+# compose para produção
+
 services:
   app:
     image: prod_project_manager

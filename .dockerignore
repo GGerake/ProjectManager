@@ -4,6 +4,7 @@ docs
 .dockerignore
 .gitignore
 pmanager.bat
+pm.sh
 
 .git
 __pycache__

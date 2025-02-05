@@ -1,4 +1,6 @@
 
+# compose para o servidor de desenvolvimento
+
 services:
   app:
     image: ghcr.io/ggerake/projectmanager/app-dev:latest

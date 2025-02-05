@@ -1,3 +1,4 @@
+# compose que monta a imagem para desenvolvimento local na maquina
 
 services:
   app:

@@ -5,11 +5,11 @@ services:
     container_name: app_project_manager_ghcr
     ports:
       - "9900:8000"
-    volumes:
-      - ../../ProjectManager:/app/ProjectManager # sincroniza a pasta ocal com a do container
     command: >
       sh -c " ./docker/wait-for-it.sh db 5432 --
               echo ------ visualizar pasta ------- &&
+              ls &&
+              cd ProjectManager &&
               ls &&
               echo ------------------------------- &&"
     depends_on:
